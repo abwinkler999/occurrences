@@ -1,4 +1,4 @@
-@source_file = IO.readlines(ARGV[0]);
+@source_file = IO.readlines("source.txt");
 text = @source_file.join(' ').strip.downcase.split(' ');
 
 text.each { |x| x.delete! ".,?\"" }
