@@ -1,5 +1,8 @@
 occurrences
 ===========
+
+syntax:  ruby wordcount.rb <file>
+
 Generate a count of the occurrences of each word for this text. Output a list of words and counts in descending count order (word with highest count listed first):
 
 WASHINGTON Unable to rest their eyes on a colorful photograph or boldface heading that could be easily skimmed and forgotten about, Americans collectively recoiled Monday when confronted with a solid block of uninterrupted text.

@@ -21,6 +21,11 @@ text.each { |x|
 	end
 }
 
-puts "\n\r------"
-puts @words
+
+puts "Words:"
+@words.sort_by! { |x| x[:count]}.reverse!
+@words.each { |y|
+	puts y[:word] + ": " + y[:count].to_s
+}
+
 
