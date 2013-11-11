@@ -18,12 +18,12 @@ text = @source_file.join(' ').strip.split(' ');
 
 text.each { |x|
 	@words.each { |y|
-		if @words[y].has_key?(x) {
-			@words[y] += 1;
-		}
-		else {
+		#if @words[y].has_key?(x) {
+		#	@words[y] += 1;
+		#}
+		#else {
 			@words.push ({:word => x, :count => 1})
-		}
+		#}
 	}
 	#if @words.include?({:word => x, :count => 1})
 		# increment counter
