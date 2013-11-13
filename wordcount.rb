@@ -1,11 +1,17 @@
-def read_source_file
-  source_file = IO.readlines("source.txt")
+KATA_SOURCE_FILE = "source.txt"
+
+def read_source_file(file_path)
+  source_file = IO.readlines(file_path)
   text = source_file.join(' ').strip.downcase.split(' ')
 	text.each { |x| x.delete! ".,?\"" }
 end
 
 def seed_list_with_first_comparator_word(text)
-	@words << {:word => text[0], :count => 0}
+	@identified_words << {:word => text[0], :count => 0}
+end
+
+def increment_existing_word(word)
+	word[:count] += 1
 end
 
 def print_results(words)
@@ -17,22 +23,21 @@ def print_results(words)
 end
 
 def new_word?(candidate)
-	new_word = true
-	@words.each { |word|
+	@identified_words.each { |word|
 		if word.has_value?(candidate)
-			word[:count] += 1
-			new_word = false
+			increment_existing_word(word)
+			return false
 		end
 	}
-	new_word
+	return true
 end
 
-@words = []
-text = read_source_file
+@identified_words = []
+text = read_source_file(KATA_SOURCE_FILE)
 seed_list_with_first_comparator_word(text)
 
 text.each { |x|
-	@words.push ({:word => x, :count => 1}) if new_word?(x)
+	@identified_words.push ({:word => x, :count => 1}) if new_word?(x)
 }
 
-print_results(@words)
+print_results(@identified_words)
