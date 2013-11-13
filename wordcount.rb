@@ -1,9 +1,9 @@
-KATA_SOURCE_FILE = "source.txt"
+DEFAULT_KATA_SOURCE_FILE = "source.txt"
 
 def read_source_file(file_path)
   source_file = IO.readlines(file_path)
   text = source_file.join(' ').strip.downcase.split(' ')
-	text.each { |x| x.delete! ".,?\"" }
+	text.each { |x| x.delete! ".,?!;:\"" }
 end
 
 def seed_list_with_first_comparator_word(text)
@@ -20,6 +20,7 @@ def print_results(words)
 	words.each { |y|
 		puts y[:word] + ": " + y[:count].to_s
 	}
+	puts "-- " + words.length.to_s + " unique words found --"
 end
 
 def new_word?(candidate)
@@ -33,7 +34,8 @@ def new_word?(candidate)
 end
 
 @identified_words = []
-text = read_source_file(KATA_SOURCE_FILE)
+text = ARGV.empty? ? (read_source_file(DEFAULT_KATA_SOURCE_FILE)) : (read_source_file(ARGV[0]))
+
 seed_list_with_first_comparator_word(text)
 
 text.each { |x|
