@@ -1,7 +1,7 @@
 occurrences
 ===========
 
-syntax:  ruby wordcount.rb <text file>
+syntax:  ruby wordcount.rb \<text file\>
 
 		 ruby wordcount.rb (to use default source file below)
 
