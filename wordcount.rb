@@ -1,29 +1,38 @@
-source_file = IO.readlines("source.txt")
-text = source_file.join(' ').strip.downcase.split(' ')
+def read_source_file
+  source_file = IO.readlines("source.txt")
+  text = source_file.join(' ').strip.downcase.split(' ')
+	text.each { |x| x.delete! ".,?\"" }
+end
 
-text.each { |x| x.delete! ".,?\"" }
+def seed_list_with_first_comparator_word(text)
+	@words << {:word => text[0], :count => 0}
+end
 
-words = []
-
-# if @words is completely empty, "each" will never iterate for it.  Workaround is to seed it with one initial word.
-words << {:word => text[0], :count => 0}
-
-text.each { |x|
-	new_word = true
+def print_results(words)
+	puts "Words:"
+	words.sort_by! { |x| x[:count]}.reverse!
 	words.each { |y|
-		if y.has_value?(x)
-			y[:count] += 1
+		puts y[:word] + ": " + y[:count].to_s
+	}
+end
+
+def new_word?(candidate)
+	new_word = true
+	@words.each { |word|
+		if word.has_value?(candidate)
+			word[:count] += 1
 			new_word = false
 		end
 	}
-	if new_word
-		words.push ({:word => x, :count => 1})
-	end
+	new_word
+end
+
+@words = []
+text = read_source_file
+seed_list_with_first_comparator_word(text)
+
+text.each { |x|
+	@words.push ({:word => x, :count => 1}) if new_word?(x)
 }
 
-
-puts "Words:"
-words.sort_by! { |x| x[:count]}.reverse!
-words.each { |y|
-	puts y[:word] + ": " + y[:count].to_s
-}
+print_results(@words)
