@@ -2,6 +2,7 @@ occurrences
 ===========
 
 syntax:  ruby wordcount.rb <text file>
+
 		 ruby wordcount.rb (to use default source file below)
 
 Generate a count of the occurrences of each word for this text. Output a list of words and counts in descending count order (word with highest count listed first):

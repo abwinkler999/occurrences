@@ -1,4 +1,4 @@
-DEFAULT_KATA_SOURCE_FILE = "source.txt"
+DEFAULT_KATA_SOURCE_FILE = "kata_default_file.txt"
 
 def read_source_file(file_path)
   source_file = IO.readlines(file_path)
