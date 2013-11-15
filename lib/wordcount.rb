@@ -33,7 +33,7 @@ def read_source_file_into_word_list(file_path)
 end
 
 def seed_list_with_first_comparator_word(text)
-  @identified_words << {:word => text[0], :count => 0}
+  @identified_words.push ({:word => text[0], :count => 0})
 end
 
 def increment_existing_word(word)
@@ -44,7 +44,7 @@ def print_results(words)
   puts "Words:"
   words.sort_by! { |x| x[:count]}.reverse!
   words.each { |y|
-    puts y[:word] + ": " + y[:count].to_s
+    puts "#{y[:word]}: #{y[:count]}" 
   }
   puts "-- #{words.length} unique words found --"
 end
