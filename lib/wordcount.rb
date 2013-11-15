@@ -14,8 +14,8 @@ class Word
         identified_word.count += 1
         return false
       end
-   }
-  return true
+    }
+    return true
   end
 end
 
