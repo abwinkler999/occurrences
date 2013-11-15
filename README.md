@@ -2,11 +2,12 @@ occurrences
 ===========
 
 Question:  Where are the tests?
+
 Answer:  Rspec doesn't play nicely with command-line arguments, so once the 'choose a file' feature was added, rspec became problematic.  Still trying to solve that one.
 
-syntax:  ruby wordcount.rb \<text file\>
+syntax:  ruby wordcount.rb [text file]
 
-		 (or just 'ruby wordcount.rb', to use default source file below)
+(or just 'ruby wordcount.rb', to use default source file below)
 
 Generate a count of the occurrences of each word for this text. Output a list of words and counts in descending count order (word with highest count listed first):
 
