@@ -1,5 +1,24 @@
 DEFAULT_KATA_SOURCE_FILE = "kata_default_file.txt"
 
+class Word
+  attr_accessor :word, :count
+
+  def initialize(word, count)
+    @word = word
+    @count = count
+  end
+
+  def new_word?(identified_words)
+    identified_words.each { |identified_word|
+      if identified_word.word == @word
+        identified_word.count += 1
+        return false
+      end
+   }
+  return true
+  end
+end
+
 def source_file_path(file_name)
   File.expand_path("../../texts/#{file_name}", __FILE__)
 end
@@ -32,37 +51,19 @@ def read_source_file_into_word_list(file_path)
   end
 end
 
-def seed_list_with_first_comparator_word(text)
-  @identified_words.push ({:word => text[0], :count => 0})
-end
-
-def increment_existing_word(word)
-  word[:count] += 1
-end
-
 def print_results(words)
   puts "Words:"
-  words.sort_by! { |x| x[:count]}.reverse!
+  words.sort_by! { |x| x.count}.reverse!
   words.each { |y|
-    puts "#{y[:word]}: #{y[:count]}" 
+    puts "#{y.word}: #{y.count}" 
   }
   puts "-- #{words.length} unique words found --"
 end
 
-def new_word?(candidate)
-  @identified_words.each { |word|
-    if word.has_value?(candidate)
-      increment_existing_word(word)
-      return false
-    end
-  }
-  return true
-end
-
 @identified_words = []
 text = identify_source_file
-seed_list_with_first_comparator_word(text)
 text.each { |x|
-  @identified_words.push ({:word => x, :count => 1}) if new_word?(x)
+  possible_new_word = Word.new x, 1
+  @identified_words.push (possible_new_word) if possible_new_word.new_word?(@identified_words)
 }
 print_results(@identified_words)
