@@ -1,15 +1,3 @@
-occurrences
-===========
-
-Question:  Where are the tests?
-Answer:  Rspec doesn't play nicely with command-line arguments, so once the 'choose a file' feature was added, rspec became problematic.  Still trying to solve that one.
-
-syntax:  ruby wordcount.rb \<text file\>
-
-		 (or just 'ruby wordcount.rb', to use default source file below)
-
-Generate a count of the occurrences of each word for this text. Output a list of words and counts in descending count order (word with highest count listed first):
-
 WASHINGTON Unable to rest their eyes on a colorful photograph or boldface heading that could be easily skimmed and forgotten about, Americans collectively recoiled Monday when confronted with a solid block of uninterrupted text.
 
 Dumbfounded citizens from Maine to California gazed helplessly at the frightening chunk of print, unsure of what to do next. Without an illustration, chart, or embedded YouTube video to ease them in, millions were frozen in place, terrified by the sight of one long, unbroken string of English words.
